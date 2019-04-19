@@ -2,18 +2,23 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NCR.Internal;
+using NCR.Models;
 
 
 namespace NCR.Tests
 {
     [TestClass]
-    public class RuleTest: RuleTestBase
+    public class BaseComputeTypeTest: RuleTestBase
     {
+        #region OneItemTestCase
+
         [TestMethod]
         public void Rule_OneItem_LessThen()
         {
             //定义规则
-            var rule = new Rule {
+            var rule = new Rule
+            {
                 Name = "Rule_OneItem_LessThen",
                 Items = new List<RuleItem>
                 {
@@ -29,7 +34,7 @@ namespace NCR.Tests
             RuleEngine.Clear();
             RuleEngine.AddRule(rule);
             //定义事实
-            var fact = new Fact {{"age", "14"}};
+            var fact = new Fact { { "age", "14" } };
             //运算
             var res = RuleEngine.Compute(fact);
 
@@ -87,7 +92,7 @@ namespace NCR.Tests
             //定义事实
             var fact = new Fact { { "sex", "women" } };
             //运算
-                  var res = RuleEngine.Compute(fact);
+            var res = RuleEngine.Compute(fact);
 
             Assert.IsTrue(res);
         }
@@ -115,7 +120,7 @@ namespace NCR.Tests
             //定义事实
             var fact = new Fact { { "say", "World" } };
             //运算
-                  var res = RuleEngine.Compute(fact);
+            var res = RuleEngine.Compute(fact);
 
             Assert.IsTrue(res);
         }
@@ -143,7 +148,7 @@ namespace NCR.Tests
             //定义事实
             var fact = new Fact { { "say", "Hi" } };
             //运算
-                  var res = RuleEngine.Compute(fact);
+            var res = RuleEngine.Compute(fact);
 
             Assert.IsTrue(res);
         }
@@ -169,9 +174,9 @@ namespace NCR.Tests
             RuleEngine.Clear();
             RuleEngine.AddRule(rule);
             //定义事实
-            var fact = new Fact {{"age", "18"}};
+            var fact = new Fact { { "age", "18" } };
             //运算
-                  var res = RuleEngine.Compute(fact);
+            var res = RuleEngine.Compute(fact);
 
             Assert.IsTrue(res);
         }
@@ -197,9 +202,9 @@ namespace NCR.Tests
             RuleEngine.Clear();
             RuleEngine.AddRule(rule);
             //定义事实
-            var fact = new Fact { { "age", "18" }};
+            var fact = new Fact { { "age", "18" } };
             //运算
-                  var res = RuleEngine.Compute(fact);
+            var res = RuleEngine.Compute(fact);
 
             Assert.IsTrue(res);
         }
@@ -227,7 +232,7 @@ namespace NCR.Tests
             //定义事实
             var fact = new Fact { { "age", "what" } };
             //运算
-                  var res = RuleEngine.Compute(fact);
+            var res = RuleEngine.Compute(fact);
 
             Assert.IsTrue(res);
         }
@@ -255,7 +260,7 @@ namespace NCR.Tests
             //定义事实
             var fact = new Fact { { "age", "19" } };
             //运算
-                  var res = RuleEngine.Compute(fact);
+            var res = RuleEngine.Compute(fact);
 
             Assert.IsTrue(res);
         }
@@ -343,5 +348,91 @@ namespace NCR.Tests
 
             Assert.IsTrue(res);
         }
+
+        #endregion
+
+        #region MoreItemTestCase
+
+        [TestMethod]
+        public void Rule_MoreItem()
+        {
+            //定义规则
+            var rule = new Rule
+            {
+                Name = "Rule_OneItem_MoreItem",
+                Items = new List<RuleItem>
+                {
+                    new RuleItem
+                    {
+                        RuleItemType = "age",
+                        ComputeType = BaseComputeType.LessThan.ToString(),
+                        Value = "18",
+                    },
+                    new RuleItem
+                    {
+                        RuleItemType = "sex",
+                        ComputeType = BaseComputeType.EqualsTo.ToString(),
+                        Value = "man",
+                    },
+                    //new RuleItem
+                    //{
+                    //    RuleItemType = "weight",
+                    //    ComputeType = BaseComputeType.MoreThan.ToString(),
+                    //    Value = "60",
+                    //}
+                },
+            };
+            //添加规则到引擎
+            RuleEngine.Clear();
+            RuleEngine.AddRule(rule);
+            //定义事实
+            var fact = new Fact {{"age", "14"}, {"sex", "man"}};
+            //运算
+            var res = RuleEngine.Compute(fact);
+
+            Assert.IsTrue(res);
+        }
+
+        [TestMethod]
+        public void Rule_MoreItem_ComputeResult()
+        {
+            //定义规则
+            var rule = new Rule
+            {
+                Name = "Rule_OneItem_MoreItem",
+                Items = new List<RuleItem>
+                {
+                    new RuleItem
+                    {
+                        RuleItemType = "age",
+                        ComputeType = BaseComputeType.LessThan.ToString(),
+                        Value = "18",
+                    },
+                    new RuleItem
+                    {
+                        RuleItemType = "sex",
+                        ComputeType = BaseComputeType.EqualsTo.ToString(),
+                        Value = "man",
+                    },
+                    new RuleItem
+                    {
+                        RuleItemType = "weight",
+                        ComputeType = BaseComputeType.MoreThan.ToString(),
+                        Value = "60",
+                    }
+                },
+            };
+            //添加规则到引擎
+            RuleEngine.Clear();
+            RuleEngine.AddRule(rule);
+            //定义事实
+            var fact = new Fact { { "age", "14" }, { "sex", "man" } };
+            //运算
+            var res = RuleEngine.Compute(fact);
+
+            Assert.IsTrue(res);
+        }
+
+        #endregion
     }
 }

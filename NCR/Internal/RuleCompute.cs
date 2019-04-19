@@ -5,13 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using NCR.Models;
 
 namespace NCR.Internal
 {
     public abstract class RuleCompute : IRuleCompute
     {
-        protected bool Compute(Rule rule, Fact fact)
+        protected ComputeResult Compute(Rule rule, Fact fact)
         {
+            var result = new ComputeResult();
             try
             {
                 #region 参数校验
@@ -34,7 +36,7 @@ namespace NCR.Internal
                 #endregion
 
                 if (!rule.Items.Any())
-                    return true;
+                    return result;
 
                 var trueCount = 0;
                 foreach (var item in rule.Items.Where(x => x.Enabled))
@@ -49,17 +51,26 @@ namespace NCR.Internal
                     }
                 }
 
-                return rule.Items.Count == trueCount;
+                result.Success = rule.Items.Count == trueCount;
             }
             catch (Exception ex)
             {
                 throw new RuleComputeException($"规则运算出错:{ex.Message}", ex);
             }
+
+            return result;
         }
 
-        public bool Compute(List<Rule> rules, Fact fact)
+        public ComputeResult Compute(List<Rule> rules, Fact fact)
         {
-            return rules.OrderByDescending(x => x.Priority).Any(rule => Compute(rule, fact));
+            var result = new ComputeResult();
+            foreach (var rule in rules.OrderByDescending(x => x.Priority))
+            {
+                result = Compute(rule, fact);
+                if (result.Success)
+                    break;
+            }
+            return result;
         }
 
         protected abstract bool ComputeInternal(RuleItem ruleItem, Fact fact);

@@ -1,4 +1,6 @@
-﻿namespace NCR
+﻿using NCR.Internal;
+
+namespace NCR
 {
     /// <summary>
     /// 规则引擎

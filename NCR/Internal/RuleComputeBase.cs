@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using NCR.Models;
 
 namespace NCR.Internal
 {

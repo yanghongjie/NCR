@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NCR.Internal;
+using NCR.Models;
 
 namespace NCR
 {
@@ -15,6 +17,6 @@ namespace NCR
         /// <param name="rules">规则集合</param>
         /// <param name="fact">事实</param>
         /// <returns>是否命中</returns>
-        bool Compute(List<Rule> rules, Fact fact);
+        ComputeResult Compute(List<Rule> rules, Fact fact);
     }
 }
