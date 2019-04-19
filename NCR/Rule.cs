@@ -15,9 +15,10 @@ namespace NCR
         public Rule()
         {
             Id = Guid.NewGuid();
-            Items = new List<RuleItem>();
+            Enabled = true;
             CreateTime = DateTime.Now;
             UpdateTime = DateTime.Now;
+            Items = new List<RuleItem>();
         }
         /// <summary>
         /// 规则项编号

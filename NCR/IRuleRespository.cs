@@ -17,5 +17,9 @@ namespace NCR
         /// </summary>
         /// <param name="rule">规则对象</param>
         void Add(Rule rule);
+        /// <summary>
+        /// 重置所有规则
+        /// </summary>
+        void Clear();
     }
 }

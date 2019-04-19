@@ -25,66 +25,57 @@ namespace NCR.Internal
             {
                 throw new ArgumentNullException(nameof(ruleItem.Value));
             }
-            if (string.IsNullOrEmpty(fact.Value))
-            {
-                throw new ArgumentNullException(nameof(fact.Value));
-            } 
             #endregion
 
             var ruleValue = ruleItem.Value.Trim().ToLower();
-            var ruleComputeType = ruleItem.ComputeType;
+            var computeType = (BaseComputeType)Enum.Parse(typeof(BaseComputeType), ruleItem.ComputeType);
 
             foreach (var factKey in fact.Keys)
             {
                 var factName = factKey.Trim().ToLower();
-                var factValue = fact[factName];
+                var factValue = fact[factName].Trim().ToLower();
 
-                if(factKey == ruleItem.RuleItemType)
+                if (factKey != ruleItem.RuleItemType) continue;
 
-                if (Enum.IsDefined(typeof(BaseComputeType), ruleComputeType))
-                {
-                    #region BaseCompute
-
-                    var computeTypeEnum = (BaseComputeType)Enum.Parse(typeof(BaseComputeType), ruleComputeType);
-                    switch (computeTypeEnum)
-                    {
-                        case BaseComputeType.LessThan:
-                            return Convert.ToDecimal(factValue) < Convert.ToDecimal(ruleValue);
-                        case BaseComputeType.MoreThan:
-                            return Convert.ToDecimal(factValue) > Convert.ToDecimal(ruleValue);
-                        case BaseComputeType.EqualsTo:
-                            return factValue.Equals(ruleValue);
-                        case BaseComputeType.NotEqualsTo:
-                            return !factValue.Equals(ruleValue);
-                        case BaseComputeType.Contains:
-                            var valArr = ruleValue.Split(',');
-                            return valArr.Any(factValue.Contains);
-                        case BaseComputeType.NotContain:
-                            valArr = ruleValue.Split(',');
-                            return !valArr.Any(factValue.Contains);
-                        case BaseComputeType.LessThanOrEquals:
-                            return Convert.ToDecimal(factValue) <= Convert.ToDecimal(ruleValue);
-                        case BaseComputeType.MoreThanOrEquals:
-                            return Convert.ToDecimal(factValue) >= Convert.ToDecimal(ruleValue);
-                        case BaseComputeType.All:
-                            return true;
-                        case BaseComputeType.EqualsOneOfArray:
-                            valArr = ruleValue.Split(',');
-                            return valArr.Any(factValue.Equals);
-                        case BaseComputeType.NotEqualsOneOfArray:
-                            valArr = ruleValue.Split(',');
-                            return !valArr.Any(factValue.Equals);
-                        case BaseComputeType.RegexTrue:
-                            return Regex.IsMatch(factValue, ruleValue);
-                        case BaseComputeType.RegexFalse:
-                            return !Regex.IsMatch(factValue, ruleValue);
-                    }
-
-                    #endregion
-                }
+                return BaseCompute(computeType, ruleValue, factValue);
             }
 
-            throw new ArgumentException($"{ruleComputeType} 找不到对应的运算方法。");
+            return false;
+        }
+
+        protected bool BaseCompute(BaseComputeType computeType,string ruleValue,string factValue)
+        {
+            switch (computeType)
+            {
+                case BaseComputeType.LessThan:
+                    return Convert.ToDecimal(factValue) < Convert.ToDecimal(ruleValue);
+                case BaseComputeType.MoreThan:
+                    return Convert.ToDecimal(factValue) > Convert.ToDecimal(ruleValue);
+                case BaseComputeType.EqualsTo:
+                    return factValue.Equals(ruleValue);
+                case BaseComputeType.NotEqualsTo:
+                    return !factValue.Equals(ruleValue);
+                case BaseComputeType.Contains:
+                    return ruleValue.Contains(factValue);
+                case BaseComputeType.NotContain:
+                    return !ruleValue.Contains(factValue);
+                case BaseComputeType.LessThanOrEquals:
+                    return Convert.ToDecimal(factValue) <= Convert.ToDecimal(ruleValue);
+                case BaseComputeType.MoreThanOrEquals:
+                    return Convert.ToDecimal(factValue) >= Convert.ToDecimal(ruleValue);
+                case BaseComputeType.All:
+                    return true;
+                case BaseComputeType.EqualsOneOfArray:
+                    return ruleValue.Split(',').Any(factValue.Equals);
+                case BaseComputeType.NotEqualsOneOfArray:
+                    return !ruleValue.Split(',').Any(factValue.Equals);
+                case BaseComputeType.RegexTrue:
+                    return Regex.IsMatch(factValue, ruleValue);
+                case BaseComputeType.RegexFalse:
+                    return !Regex.IsMatch(factValue, ruleValue);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(computeType), computeType, $"{computeType} 找不到对应的运算方法。");
+            }
         }
     }
 }

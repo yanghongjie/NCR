@@ -25,7 +25,5 @@ namespace NCR.Tests
             var engine = provider.GetService<IRuleEngine>();
             return engine;
         }
-
-
     }
 }

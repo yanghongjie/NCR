@@ -9,6 +9,12 @@ namespace NCR
     /// </summary>
     public class RuleItem
     {
+        public RuleItem()
+        {
+            Enabled = true;
+            CreateTime = DateTime.Now;
+            UpdateTime = DateTime.Now;
+        }
         /// <summary>
         /// 规则项编号
         /// </summary>
@@ -36,10 +42,10 @@ namespace NCR
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreateTime => DateTime.Now;
+        public DateTime CreateTime { get; set; }
         /// <summary>
         /// 更改时间
         /// </summary>
-        public DateTime UpdateTime => DateTime.Now;
+        public DateTime UpdateTime { get; set; }
     }
 }

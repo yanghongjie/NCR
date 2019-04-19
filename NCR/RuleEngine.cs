@@ -4,12 +4,9 @@ using NCR.Internal;
 
 namespace NCR
 {
-    public interface IRuleEngine
-    {
-        bool Compute(Fact fact);
-        void AddRule(Rule rule);
-    }
-
+    /// <summary>
+    /// 规则引擎
+    /// </summary>
     public class RuleEngine : IRuleEngine
     {
         /// <summary>
@@ -26,6 +23,7 @@ namespace NCR
             _ruleCompute = ruleCompute;
             _ruleRespository = ruleRespository;
         }
+
         public bool Compute(Fact fact)
         {
             return _ruleCompute.Compute(_ruleRespository.GetRules(), fact);
@@ -35,6 +33,9 @@ namespace NCR
         {
             _ruleRespository.Add(rule);
         }
-
+        public void Clear()
+        {
+            _ruleRespository.Clear();
+        }
     }
 }

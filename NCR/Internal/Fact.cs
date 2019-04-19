@@ -8,7 +8,7 @@ namespace NCR
     /// <summary>
     /// 事实
     /// </summary>
-    public class Fact : Dictionary<string,string>
+    public class Fact : Dictionary<string, string>, IFact
     {
     }
 }

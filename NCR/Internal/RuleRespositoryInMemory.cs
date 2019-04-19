@@ -18,5 +18,10 @@ namespace NCR.Internal
                 throw new ArgumentException($"规则名称 {rule.Name} 已经存在。");
             Rules.Add(rule);
         }
+
+        public void Clear()
+        {
+            Rules.Clear();
+        }
     }
 }
