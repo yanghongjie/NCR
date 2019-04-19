@@ -1,2 +1,2 @@
 # NCR
-Net Core For Rule Engine
+简单易用的规则引擎
