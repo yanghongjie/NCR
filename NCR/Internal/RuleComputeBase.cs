@@ -7,7 +7,7 @@ using NCR.Models;
 
 namespace NCR.Internal
 {
-    public  class RuleComputeBase : RuleCompute
+    public class RuleComputeBase : RuleCompute
     {
         protected override bool ComputeInternal(RuleItem ruleItem, Fact fact)
         {

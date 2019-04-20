@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NCR.Internal;
+using NCR.Models;
 
 namespace NCR.Tests
 {

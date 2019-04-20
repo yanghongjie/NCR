@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using NCR.Models;
 
-namespace NCR
+namespace NCR.Models
 {
     /// <summary>
     /// 规则

@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using NCR.Internal;
-using NCR.Models;
+﻿using NCR.Internal;
 
-namespace NCR
+namespace NCR.Models
 {
     /// <summary>
     /// 规则引擎
