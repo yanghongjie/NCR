@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using NCR.Enums;
 using NCR.Extensions;
 using NCR.Models;
 
@@ -65,7 +66,7 @@ namespace NCR.Internal
                     return Convert.ToDecimal(factValue) <= Convert.ToDecimal(ruleValue);
                 case BaseComputeType.MoreThanOrEquals:
                     return Convert.ToDecimal(factValue) >= Convert.ToDecimal(ruleValue);
-                case BaseComputeType.All:
+                case BaseComputeType.Any:
                     return true;
                 case BaseComputeType.EqualsOneOfArray:
                     return ruleValue.Split(',').Any(factValue.Equals);

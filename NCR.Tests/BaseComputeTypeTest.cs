@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NCR.Enums;
 using NCR.Internal;
 using NCR.Models;
 
@@ -229,7 +230,7 @@ namespace NCR.Tests
                     new RuleItem
                     {
                         RuleItemType = "age",
-                        ComputeType = BaseComputeType.All.ToString(),
+                        ComputeType = BaseComputeType.Any.ToString(),
                         Value = "18",
                     }
                 },

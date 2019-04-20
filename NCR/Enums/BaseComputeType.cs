@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace NCR
+namespace NCR.Enums
 {
     /// <summary>
     /// 运算类型
@@ -51,7 +51,7 @@ namespace NCR
         /// 任何值
         /// </summary>
         [Description("任何值")]
-        All = 9,
+        Any = 9,
         /// <summary>
         /// 等于数组中任意一值
         /// </summary>
@@ -65,12 +65,12 @@ namespace NCR
         /// <summary>
         /// 正则达式成立
         /// </summary>
-        [Description("正则达式成立")]
+        [Description("正则表达式成立")]
         RegexTrue = 12,
         /// <summary>
         /// 正则达式不成立
         /// </summary>
-        [Description("正则达式不成立")]
+        [Description("正则表达式不成立")]
         RegexFalse = 13
     }
 }
