@@ -48,7 +48,7 @@ namespace NCR.Internal
                         result.Infos.Add(new ComputeResultInfo
                         {
                             MissRuleItemType = item.RuleItemType,
-                            ComputeMessage = $"RuleValue:{item.Value} FactValue:{fact.GetValueOrDefault(item.RuleItemType)??"Null"}"
+                            ComputeMessage = $"RuleValue:{item.Value} FactValue:{fact.GetValueOrDefault(item.RuleItemType) ?? "Null"}"
                         });
                         break;
                     }
@@ -72,6 +72,7 @@ namespace NCR.Internal
                 result = Compute(rule, fact);
                 if (!result.Success) continue;
                 result.HitRule = rule;
+                result.HitFact = fact;
                 break;
             }
             return result;

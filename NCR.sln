@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCR", "NCR\NCR.csproj", "{6F59C42E-DF2A-4F20-AADD-916FA775F8BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCR", "NCR\NCR.csproj", "{6F59C42E-DF2A-4F20-AADD-916FA775F8BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCR.Tests", "NCR.Tests\NCR.Tests.csproj", "{9997FEF3-3F07-42F9-9C19-F838330848A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCR.Tests", "NCR.Tests\NCR.Tests.csproj", "{9997FEF3-3F07-42F9-9C19-F838330848A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

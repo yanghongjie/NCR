@@ -2,7 +2,7 @@
 using NCR.Internal;
 using NCR.Models;
 
-namespace NCR.Tests
+namespace NCR.Tests.Base
 {
     public class RuleTestBase
     {

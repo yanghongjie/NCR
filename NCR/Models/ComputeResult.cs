@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using NCR.Internal;
 
 namespace NCR.Models
 {
@@ -20,6 +21,10 @@ namespace NCR.Models
         /// </summary>
         public Rule HitRule { get; set; }
         /// <summary>
+        /// 命中的事实
+        /// </summary>
+        public Fact HitFact { get; set; }
+        /// <summary>
         /// 运算结果
         /// </summary>
         public List<ComputeResultInfo> Infos { get; set; }
@@ -28,7 +33,7 @@ namespace NCR.Models
     public class ComputeResultInfo
     {
         /// <summary>
-        /// 规则项
+        /// 未命中的规则项
         /// </summary>
         public string MissRuleItemType { get; set; }
         /// <summary>

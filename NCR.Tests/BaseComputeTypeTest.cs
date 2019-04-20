@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NCR.Enums;
 using NCR.Internal;
 using NCR.Models;
+using NCR.Tests.Base;
 
 
 namespace NCR.Tests
@@ -16,12 +15,12 @@ namespace NCR.Tests
         #region OneItemTestCase
 
         [TestMethod]
-        public void Rule_OneItem_LessThen()
+        public void BaseComputeType_OneItem_LessThen()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_LessThen",
+                Name = "BaseComputeType_OneItem_LessThen",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -45,12 +44,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_OneItem_MoreThan()
+        public void BaseComputeType_OneItem_MoreThan()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_MoreThan",
+                Name = "BaseComputeType_OneItem_MoreThan",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -74,12 +73,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_OneItem_NotEqualsTo()
+        public void BaseComputeType_OneItem_NotEqualsTo()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_NotEqualsTo",
+                Name = "BaseComputeType_OneItem_NotEqualsTo",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -103,12 +102,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_OneItem_Contains()
+        public void BaseComputeType_OneItem_Contains()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_Contains",
+                Name = "BaseComputeType_OneItem_Contains",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -132,12 +131,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_OneItem_NotContain()
+        public void BaseComputeType_OneItem_NotContain()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_NotContain",
+                Name = "BaseComputeType_OneItem_NotContain",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -161,12 +160,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_OneItem_LessThanOrEquals()
+        public void BaseComputeType_OneItem_LessThanOrEquals()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_LessThanOrEquals",
+                Name = "BaseComputeType_OneItem_LessThanOrEquals",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -190,12 +189,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_OneItem_MoreThanOrEquals()
+        public void BaseComputeType_OneItem_MoreThanOrEquals()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_MoreThanOrEquals",
+                Name = "BaseComputeType_OneItem_MoreThanOrEquals",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -219,12 +218,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_OneItem_All()
+        public void BaseComputeType_OneItem_Any()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_All",
+                Name = "BaseComputeType_OneItem_Any",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -248,12 +247,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_OneItem_EqualsOneOfArray()
+        public void BaseComputeType_OneItem_EqualsOneOfArray()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_EqualsOneOfArray",
+                Name = "BaseComputeType_OneItem_EqualsOneOfArray",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -277,12 +276,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_OneItem_NotEqualsOneOfArray()
+        public void BaseComputeType_OneItem_NotEqualsOneOfArray()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_NotEqualsOneOfArray",
+                Name = "BaseComputeType_OneItem_NotEqualsOneOfArray",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -306,12 +305,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_OneItem_RegexTrue()
+        public void BaseComputeType_OneItem_RegexTrue()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_RegexTrue",
+                Name = "BaseComputeType_OneItem_RegexTrue",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -335,12 +334,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_OneItem_RegexFalse()
+        public void BaseComputeType_OneItem_RegexFalse()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_RegexFalse",
+                Name = "BaseComputeType_OneItem_RegexFalse",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -368,12 +367,12 @@ namespace NCR.Tests
         #region MoreItemTestCase
 
         [TestMethod]
-        public void Rule_MoreItem_HitRule()
+        public void BaseComputeType_MoreItem_HitRule()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_MoreItem_HitRule",
+                Name = "BaseComputeType_MoreItem_HitRule",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -403,12 +402,12 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void Rule_MoreItem_MissRule()
+        public void BaseComputeType_MoreItem_MissRule()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_MoreItem_MissRule",
+                Name = "BaseComputeType_MoreItem_MissRule",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -450,12 +449,12 @@ namespace NCR.Tests
         #region MoreRuleTestCase
 
         [TestMethod]
-        public void Rule_MoreRule_HitRule()
+        public void BaseComputeType_MoreBaseComputeType_HitRule()
         {
             //定义规则
             var rule1 = new Rule
             {
-                Name = "Rule_MoreRule_HitRule1",
+                Name = "BaseComputeType_MoreBaseComputeType_HitRule1",
                 Priority = 1,
                 Items = new List<RuleItem>
                 {
@@ -469,7 +468,7 @@ namespace NCR.Tests
             };
             var rule2 = new Rule
             {
-                Name = "Rule_MoreRule_HitRule2",
+                Name = "BaseComputeType_MoreBaseComputeType_HitRule2",
                 Priority = 0,
                 Items = new List<RuleItem>
                 {
@@ -492,16 +491,16 @@ namespace NCR.Tests
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
-            Assert.AreEqual(res.HitRule.Name, "Rule_MoreRule_HitRule1");
+            Assert.AreEqual(res.HitRule.Name, "BaseComputeType_MoreBaseComputeType_HitRule1");
         }
 
         [TestMethod]
-        public void Rule_MoreRule_MissRule()
+        public void BaseComputeType_MoreBaseComputeType_MissRule()
         {
             //定义规则
             var rule1 = new Rule
             {
-                Name = "Rule_MoreRule_MissRule",
+                Name = "BaseComputeType_MoreBaseComputeType_MissRule",
                 Priority = 1,
                 Items = new List<RuleItem>
                 {
@@ -515,7 +514,7 @@ namespace NCR.Tests
             };
             var rule2 = new Rule
             {
-                Name = "Rule_MoreRule_HitRule2",
+                Name = "BaseComputeType_MoreBaseComputeType_HitRule2",
                 Priority = 0,
                 Items = new List<RuleItem>
                 {
