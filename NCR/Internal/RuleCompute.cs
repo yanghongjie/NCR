@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using NCR.Extensions;
 using NCR.Models;
 
 namespace NCR.Internal
@@ -17,15 +18,15 @@ namespace NCR.Internal
             try
             {
                 #region 参数校验
-                if (null == rule)
+                if (rule.IsNull())
                 {
                     throw new ArgumentNullException(nameof(rule));
                 }
-                if (string.IsNullOrEmpty(rule.Name))
+                if (rule.Name.IsNullOrEmpty())
                 {
                     throw new ArgumentNullException(nameof(rule.Name));
                 }
-                if (null == fact)
+                if (fact.IsNull())
                 {
                     throw new ArgumentNullException(nameof(fact));
                 }
@@ -47,6 +48,11 @@ namespace NCR.Internal
                     }
                     else
                     {
+                        result.Infos.Add(new ComputeResultInfo
+                        {
+                            MissRuleItemType = item.RuleItemType,
+                            ComputeMessage = $"RuleValue:{item.Value} FactValue:{fact.GetValueOrDefault(item.RuleItemType)??"Null"}"
+                        });
                         break;
                     }
                 }
@@ -67,8 +73,9 @@ namespace NCR.Internal
             foreach (var rule in rules.OrderByDescending(x => x.Priority))
             {
                 result = Compute(rule, fact);
-                if (result.Success)
-                    break;
+                if (!result.Success) continue;
+                result.HitRule = rule;
+                break;
             }
             return result;
         }

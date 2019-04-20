@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using NCR.Internal;
+using NCR.Models;
 
 namespace NCR
 {
@@ -24,7 +25,7 @@ namespace NCR
             _ruleRespository = ruleRespository;
         }
 
-        public bool Compute(Fact fact)
+        public ComputeResult Compute(Fact fact)
         {
             return _ruleCompute.Compute(_ruleRespository.GetRules(), fact);
         }

@@ -7,6 +7,10 @@ namespace NCR.Models
     /// </summary>
     public class ComputeResult
     {
+        public ComputeResult()
+        {
+            Infos = new List<ComputeResultInfo>();
+        }
         /// <summary>
         /// 是否所有规则都命中
         /// </summary>
@@ -26,7 +30,7 @@ namespace NCR.Models
         /// <summary>
         /// 规则项
         /// </summary>
-        public string RuleItemType { get; set; }
+        public string MissRuleItemType { get; set; }
         /// <summary>
         /// 运算信息
         /// </summary>

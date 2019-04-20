@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using NCR.Extensions;
 using NCR.Models;
 
 namespace NCR.Internal
@@ -10,19 +11,19 @@ namespace NCR.Internal
         protected override bool ComputeInternal(RuleItem ruleItem, Fact fact)
         {
             #region 参数校验
-            if (null == ruleItem)
+            if (ruleItem.IsNull())
             {
                 throw new ArgumentNullException(nameof(ruleItem));
             }
-            if (null == fact)
+            if (fact.IsNull())
             {
                 throw new ArgumentNullException(nameof(fact));
             }
-            if (string.IsNullOrEmpty(ruleItem.ComputeType))
+            if (ruleItem.ComputeType.IsNullOrEmpty())
             {
                 throw new ArgumentNullException(nameof(ruleItem.ComputeType));
             }
-            if (string.IsNullOrEmpty(ruleItem.Value))
+            if (ruleItem.Value.IsNullOrEmpty())
             {
                 throw new ArgumentNullException(nameof(ruleItem.Value));
             }

@@ -1,4 +1,5 @@
 ﻿using NCR.Internal;
+using NCR.Models;
 
 namespace NCR
 {
@@ -11,8 +12,8 @@ namespace NCR
         /// 运算
         /// </summary>
         /// <param name="fact">事实</param>
-        /// <returns>是否命中</returns>
-        bool Compute(Fact fact);
+        /// <returns>运算结果</returns>
+        ComputeResult Compute(Fact fact);
         /// <summary>
         /// 添加规则
         /// </summary>

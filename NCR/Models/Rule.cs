@@ -15,7 +15,6 @@ namespace NCR
         /// </summary>
         public Rule()
         {
-            Id = Guid.NewGuid();
             Enabled = true;
             CreateTime = DateTime.Now;
             UpdateTime = DateTime.Now;
@@ -24,7 +23,7 @@ namespace NCR
         /// <summary>
         /// 规则项编号
         /// </summary>
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         /// <summary>
         /// 规则名称
         /// </summary>
@@ -34,7 +33,7 @@ namespace NCR
         /// </summary>
         public string Type { get; set; }
         /// <summary>
-        /// 优先级
+        /// 优先级(越大越高),默认值为0
         /// </summary>
         public int Priority { get; set; }
         /// <summary>

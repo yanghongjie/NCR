@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -38,7 +39,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
@@ -66,7 +68,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
@@ -94,7 +97,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
@@ -122,7 +126,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
@@ -150,7 +155,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
@@ -178,7 +184,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
@@ -206,7 +213,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
@@ -234,7 +242,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
@@ -262,7 +271,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
@@ -290,7 +300,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
@@ -318,7 +329,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
@@ -346,7 +358,8 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         #endregion
@@ -354,12 +367,12 @@ namespace NCR.Tests
         #region MoreItemTestCase
 
         [TestMethod]
-        public void Rule_MoreItem()
+        public void Rule_MoreItem_HitRule()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_MoreItem",
+                Name = "Rule_MoreItem_HitRule",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -373,13 +386,7 @@ namespace NCR.Tests
                         RuleItemType = "sex",
                         ComputeType = BaseComputeType.EqualsTo.ToString(),
                         Value = "man",
-                    },
-                    //new RuleItem
-                    //{
-                    //    RuleItemType = "weight",
-                    //    ComputeType = BaseComputeType.MoreThan.ToString(),
-                    //    Value = "60",
-                    //}
+                    }
                 },
             };
             //添加规则到引擎
@@ -390,16 +397,17 @@ namespace NCR.Tests
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void Rule_MoreItem_ComputeResult()
+        public void Rule_MoreItem_MissRule()
         {
             //定义规则
             var rule = new Rule
             {
-                Name = "Rule_OneItem_MoreItem",
+                Name = "Rule_MoreItem_MissRule",
                 Items = new List<RuleItem>
                 {
                     new RuleItem
@@ -426,11 +434,111 @@ namespace NCR.Tests
             RuleEngine.Clear();
             RuleEngine.AddRule(rule);
             //定义事实
-            var fact = new Fact { { "age", "14" }, { "sex", "man" } };
+            var fact = new Fact { { "age", "14" }, { "sex", "man" }, { "weight", "50" } };
             //运算
             var res = RuleEngine.Compute(fact);
 
-            Assert.IsTrue(res);
+            Assert.IsNotNull(res);
+            Assert.IsNull(res.HitRule);
+            Assert.IsFalse(res.Success);
+            Assert.IsTrue(res.Infos.Any(x => x.MissRuleItemType == "weight"));
+        }
+
+        #endregion
+
+        #region MoreRuleTestCase
+
+        [TestMethod]
+        public void Rule_MoreRule_HitRule()
+        {
+            //定义规则
+            var rule1 = new Rule
+            {
+                Name = "Rule_MoreRule_HitRule1",
+                Priority = 1,
+                Items = new List<RuleItem>
+                {
+                    new RuleItem
+                    {
+                        RuleItemType = "age",
+                        ComputeType = BaseComputeType.LessThan.ToString(),
+                        Value = "15",
+                    }
+                },
+            };
+            var rule2 = new Rule
+            {
+                Name = "Rule_MoreRule_HitRule2",
+                Priority = 0,
+                Items = new List<RuleItem>
+                {
+                    new RuleItem
+                    {
+                        RuleItemType = "age",
+                        ComputeType = BaseComputeType.LessThan.ToString(),
+                        Value = "18",
+                    }
+                },
+            };
+            //添加规则到引擎
+            RuleEngine.Clear();
+            RuleEngine.AddRule(rule1);
+            RuleEngine.AddRule(rule2);
+            //定义事实
+            var fact = new Fact { { "age", "14" } };
+            //运算
+            var res = RuleEngine.Compute(fact);
+
+            Assert.IsNotNull(res);
+            Assert.IsTrue(res.Success);
+            Assert.AreEqual(res.HitRule.Name, "Rule_MoreRule_HitRule1");
+        }
+
+        [TestMethod]
+        public void Rule_MoreRule_MissRule()
+        {
+            //定义规则
+            var rule1 = new Rule
+            {
+                Name = "Rule_MoreRule_MissRule",
+                Priority = 1,
+                Items = new List<RuleItem>
+                {
+                    new RuleItem
+                    {
+                        RuleItemType = "age",
+                        ComputeType = BaseComputeType.LessThan.ToString(),
+                        Value = "15",
+                    }
+                },
+            };
+            var rule2 = new Rule
+            {
+                Name = "Rule_MoreRule_HitRule2",
+                Priority = 0,
+                Items = new List<RuleItem>
+                {
+                    new RuleItem
+                    {
+                        RuleItemType = "age",
+                        ComputeType = BaseComputeType.LessThan.ToString(),
+                        Value = "18",
+                    }
+                },
+            };
+            //添加规则到引擎
+            RuleEngine.Clear();
+            RuleEngine.AddRule(rule1);
+            RuleEngine.AddRule(rule2);
+            //定义事实
+            var fact = new Fact { { "age", "24" } };
+            //运算
+            var res = RuleEngine.Compute(fact);
+
+            Assert.IsNotNull(res);
+            Assert.IsNull(res.HitRule);
+            Assert.IsFalse(res.Success);
+            Assert.IsTrue(res.Infos.Any(x => x.MissRuleItemType == "age"));
         }
 
         #endregion
