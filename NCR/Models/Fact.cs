@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NCR.Internal
+namespace NCR.Models
 {
     /// <summary>
     /// 事实

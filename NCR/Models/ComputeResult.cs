@@ -12,7 +12,7 @@ namespace NCR.Models
             Infos = new List<ComputeResultInfo>();
         }
         /// <summary>
-        /// 是否所有规则都命中
+        /// 是否命中
         /// </summary>
         public bool Success { get; set; }
         /// <summary>
