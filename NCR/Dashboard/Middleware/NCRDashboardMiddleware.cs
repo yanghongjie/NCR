@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
-using NCR.Dashboard.Middleware;
 
-namespace NCR.Dashboard
+namespace NCR.Dashboard.Middleware
 {
     /// <summary>
     /// Net Core Rule Dashboard Middleware

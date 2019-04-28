@@ -3,7 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NCR.Dashboard;
+using NCR.Dashboard.Middleware;
+using NLog.Extensions.Logging;
+using NLog.Web;
 
 namespace NCR.Sample
 {
@@ -23,7 +27,7 @@ namespace NCR.Sample
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,IConfiguration conf)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,IConfiguration conf, ILoggerFactory factory)
         {
             if (env.IsDevelopment())
             {
