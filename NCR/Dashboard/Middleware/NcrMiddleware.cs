@@ -1,15 +1,21 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 
 namespace NCR.Dashboard.Middleware
 {
     /// <summary>
-    /// Net Core Rule Dashboard Middleware
+    /// Net Core Rule Middleware
     /// </summary>
-    public static class NcrDashboardMiddleware
+    public static class NcrMiddleware
     {
-        public static  void UseNcrDashboard(this IApplicationBuilder app, IConfiguration configuration)
+        /// <summary>
+        /// 使用 Net Core Rule
+        /// </summary>
+        public static  void UseNcr(this IApplicationBuilder app, IConfiguration configuration)
         {
+          
+
             //添加全局异常处理
             app.UseExceptionHandler("/globalerror");
 

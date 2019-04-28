@@ -34,7 +34,7 @@ namespace NCR.Sample
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseNcrDashboard(conf);
+            app.UseNcr(conf);
             app.UseMvc();
         }
     }
