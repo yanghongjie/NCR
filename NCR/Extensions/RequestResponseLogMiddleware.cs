@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Logging;
 using NCR.Extensions;
 
-namespace NCR.Dashboard.Middleware
+namespace NCR.Extensions
 {
     /// <summary>
     /// 请求响应日志中间件

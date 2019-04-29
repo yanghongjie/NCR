@@ -12,6 +12,7 @@ namespace NCR.Sample.Controllers
     public class ValuesController : ControllerBase
     {
         private readonly ILogger _logger;
+        
 
         public ValuesController(ILogger<ValuesController> logger)
         {
@@ -22,7 +23,7 @@ namespace NCR.Sample.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            _logger.LogDebug("我是debug。。。");
+            
             return new string[] { "value1", "value2" };
         }
 

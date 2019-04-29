@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NCR.Dashboard;
 using NCR.Dashboard.Middleware;
+using NCR.Extensions;
 using NLog.Extensions.Logging;
 using NLog.Web;
 

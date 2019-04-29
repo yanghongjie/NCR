@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
+using NCR.Dashboard.Middleware;
 
-namespace NCR.Dashboard.Middleware
+namespace NCR.Extensions
 {
     /// <summary>
     /// Net Core Rule Middleware
@@ -12,10 +12,8 @@ namespace NCR.Dashboard.Middleware
         /// <summary>
         /// 使用 Net Core Rule
         /// </summary>
-        public static  void UseNcr(this IApplicationBuilder app, IConfiguration configuration)
+        public static void UseNcr(this IApplicationBuilder app, IConfiguration configuration)
         {
-          
-
             //添加全局异常处理
             app.UseExceptionHandler("/globalerror");
 
