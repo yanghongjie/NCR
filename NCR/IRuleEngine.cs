@@ -1,4 +1,4 @@
-﻿using NCR.Internal;
+﻿using System.Threading.Tasks;
 using NCR.Models;
 
 namespace NCR
@@ -13,15 +13,15 @@ namespace NCR
         /// </summary>
         /// <param name="fact">事实</param>
         /// <returns>运算结果</returns>
-        ComputeResult Compute(Fact fact);
+        Task<ComputeResult> Compute(Fact fact);
         /// <summary>
         /// 添加规则
         /// </summary>
         /// <param name="rule">规则</param>
-        void AddRule(Rule rule);
+        Task AddRule(Rule rule);
         /// <summary>
         /// 重置所有规则
         /// </summary>
-        void Clear();
+        Task Clear();
     }
 }

@@ -1,4 +1,4 @@
-﻿using NCR.Internal;
+﻿using System.Threading.Tasks;
 
 namespace NCR.Models
 {
@@ -14,26 +14,27 @@ namespace NCR.Models
         /// <summary>
         /// 规则集合
         /// </summary>
-        private readonly IRuleRespository _ruleRespository;
+        private readonly IRuleRepository _ruleRepository;
 
-        public RuleEngine(IRuleCompute ruleCompute, IRuleRespository ruleRespository)
+        public RuleEngine(IRuleCompute ruleCompute, IRuleRepository ruleRepository)
         {
             _ruleCompute = ruleCompute;
-            _ruleRespository = ruleRespository;
+            _ruleRepository = ruleRepository;
         }
 
-        public ComputeResult Compute(Fact fact)
+        public async Task<ComputeResult> Compute(Fact fact)
         {
-            return _ruleCompute.Compute(_ruleRespository.GetRules(), fact);
+            var rules = await _ruleRepository.GetRules();
+            return _ruleCompute.Compute(rules, fact);
         }
 
-        public void AddRule(Rule rule)
+        public async Task AddRule(Rule rule)
         {
-            _ruleRespository.Add(rule);
+            await _ruleRepository.AddRule(rule);
         }
-        public void Clear()
+        public async Task Clear()
         {
-            _ruleRespository.Clear();
+            await _ruleRepository.Clear();
         }
     }
 }

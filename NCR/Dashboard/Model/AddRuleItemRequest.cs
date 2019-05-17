@@ -1,22 +1,7 @@
-﻿using System;
-
-namespace NCR.Models
+﻿namespace NCR.Dashboard.Model
 {
-    /// <summary>
-    /// 规则项
-    /// </summary>
-    public class RuleItem
+    public class AddRuleItemRequest
     {
-        public RuleItem()
-        {
-            Enabled = true;
-            CreateTime = DateTime.Now;
-            UpdateTime = DateTime.Now;
-        }
-        /// <summary>
-        /// 规则项编号
-        /// </summary>
-        public int Id { get; set; }
         /// <summary>
         /// 规则编号
         /// </summary>
@@ -38,16 +23,8 @@ namespace NCR.Models
         /// </summary>
         public string Desciption { get; set; }
         /// <summary>
-        /// 是否启用,默认开启
+        /// 是否启用
         /// </summary>
         public bool Enabled { get; set; }
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public DateTime CreateTime { get; set; }
-        /// <summary>
-        /// 更改时间
-        /// </summary>
-        public DateTime UpdateTime { get; set; }
     }
 }

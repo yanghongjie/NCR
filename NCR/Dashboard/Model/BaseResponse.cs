@@ -3,9 +3,9 @@
     public class BaseResponse
     {
         public string RequestId { get; set; }
-        public ErrorCode ErrorCode { get; set; }
-        public string ReturnMessage { get; set; }
-        public object ReturnData { get; set; }
+        public ErrorCode Code { get; set; }
+        public string Message { get; set; }
+        public object Data { get; set; }
         public bool Success { get; set; }
     }
 

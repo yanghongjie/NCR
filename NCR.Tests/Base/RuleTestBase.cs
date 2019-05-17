@@ -26,7 +26,7 @@ namespace NCR.Tests.Base
             {
                 CheckValue = "haha"
             })).Returns(0);
-            _services.AddSingleton<IRuleRespository, RuleRespositoryInMemory>();
+            _services.AddSingleton<IRuleRepository, RuleRepositoryInMemory>();
             _services.AddSingleton<IRuleCompute, RuleComputeCustom>();
             _services.AddSingleton<IRuleEngine, RuleEngine>();
             _services.AddSingleton(dataAccess.Object);

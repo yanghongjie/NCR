@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -12,7 +12,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dashboard\Views\" />
+    <None Update="Dashboard\Dist\assets\2ab721f2063623931a12deaa2b4d0aee.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dashboard\Dist\assets\8a9b1cb42600380c8e4a4a9b9eb55271.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dashboard\Dist\assets\8c382430f673ad2237bbf19e5c8a4b00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dashboard\Dist\css\index.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dashboard\Dist\favicon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dashboard\Dist\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Dashboard\Dist\js\index.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

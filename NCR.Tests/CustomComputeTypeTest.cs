@@ -1,11 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using NCR.Enums;
-using NCR.Internal;
 using NCR.Models;
 using NCR.Tests.Base;
 
@@ -18,7 +13,7 @@ namespace NCR.Tests
         #region OneItemTestCase
 
         [TestMethod]
-        public void CustomComputeType_OneItem_ExistsBySql()
+        public async Task CustomComputeType_OneItem_ExistsBySql()
         {
             //定义规则
             var rule = new Rule
@@ -35,19 +30,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "name", "admin" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void CustomComputeType_OneItem_NotExistsBySql()
+        public async Task CustomComputeType_OneItem_NotExistsBySql()
         {
             //定义规则
             var rule = new Rule
@@ -64,12 +59,12 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "name", "haha" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);

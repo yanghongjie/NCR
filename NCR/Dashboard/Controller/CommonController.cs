@@ -56,8 +56,8 @@ namespace NCR.Dashboard.Controller
 
             var res = new BaseResponse
             {
-                ErrorCode = ErrorCode.内部服务异常,
-                ReturnMessage = error?.Message
+                Code = ErrorCode.内部服务异常,
+                Message = error?.Message
             };
 
             return res;

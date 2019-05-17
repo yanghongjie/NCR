@@ -13,13 +13,14 @@ namespace NCR.Models
         /// </summary>
         public Rule()
         {
+            Type = "default";
             Enabled = true;
             CreateTime = DateTime.Now;
             UpdateTime = DateTime.Now;
             Items = new List<RuleItem>();
         }
         /// <summary>
-        /// 规则项编号
+        /// 规则编号
         /// </summary>
         public int Id { get; set; }
         /// <summary>
@@ -43,7 +44,7 @@ namespace NCR.Models
         /// </summary>
         public List<RuleItem> Items { get; set; }
         /// <summary>
-        /// 是否启用
+        /// 是否启用,默认开启
         /// </summary>
         public bool Enabled { get; set; }
         /// <summary>

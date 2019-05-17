@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NCR.Enums;
-using NCR.Internal;
 using NCR.Models;
 using NCR.Tests.Base;
 
@@ -15,7 +15,7 @@ namespace NCR.Tests
         #region OneItemTestCase
 
         [TestMethod]
-        public void BaseComputeType_OneItem_LessThen()
+        public async Task BaseComputeType_OneItem_LessThen()
         {
             //定义规则
             var rule = new Rule
@@ -32,19 +32,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "age", "14" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_OneItem_MoreThan()
+        public async Task BaseComputeType_OneItem_MoreThan()
         {
             //定义规则
             var rule = new Rule
@@ -61,19 +61,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "age", "20" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_OneItem_NotEqualsTo()
+        public async Task BaseComputeType_OneItem_NotEqualsTo()
         {
             //定义规则
             var rule = new Rule
@@ -90,19 +90,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "sex", "women" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_OneItem_Contains()
+        public async Task BaseComputeType_OneItem_Contains()
         {
             //定义规则
             var rule = new Rule
@@ -119,19 +119,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "say", "World" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_OneItem_NotContain()
+        public async Task BaseComputeType_OneItem_NotContain()
         {
             //定义规则
             var rule = new Rule
@@ -148,19 +148,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "say", "Hi" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_OneItem_LessThanOrEquals()
+        public async Task BaseComputeType_OneItem_LessThanOrEquals()
         {
             //定义规则
             var rule = new Rule
@@ -177,19 +177,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "age", "18" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_OneItem_MoreThanOrEquals()
+        public async Task BaseComputeType_OneItem_MoreThanOrEquals()
         {
             //定义规则
             var rule = new Rule
@@ -206,19 +206,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "age", "18" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_OneItem_Any()
+        public async Task BaseComputeType_OneItem_Any()
         {
             //定义规则
             var rule = new Rule
@@ -235,19 +235,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "age", "what" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_OneItem_EqualsOneOfArray()
+        public async Task BaseComputeType_OneItem_EqualsOneOfArray()
         {
             //定义规则
             var rule = new Rule
@@ -264,19 +264,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "age", "19" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_OneItem_NotEqualsOneOfArray()
+        public async Task BaseComputeType_OneItem_NotEqualsOneOfArray()
         {
             //定义规则
             var rule = new Rule
@@ -293,19 +293,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "age", "what" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_OneItem_RegexTrue()
+        public async Task BaseComputeType_OneItem_RegexTrue()
         {
             //定义规则
             var rule = new Rule
@@ -322,19 +322,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "age", "18" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_OneItem_RegexFalse()
+        public async Task BaseComputeType_OneItem_RegexFalse()
         {
             //定义规则
             var rule = new Rule
@@ -351,12 +351,12 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "age", "what" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
@@ -367,7 +367,7 @@ namespace NCR.Tests
         #region MoreItemTestCase
 
         [TestMethod]
-        public void BaseComputeType_MoreItem_HitRule()
+        public async Task BaseComputeType_MoreItem_HitRule()
         {
             //定义规则
             var rule = new Rule
@@ -390,19 +390,19 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact {{"age", "14"}, {"sex", "man"}};
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
         }
 
         [TestMethod]
-        public void BaseComputeType_MoreItem_MissRule()
+        public async Task BaseComputeType_MoreItem_MissRule()
         {
             //定义规则
             var rule = new Rule
@@ -431,12 +431,12 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule);
             //定义事实
             var fact = new Fact { { "age", "14" }, { "sex", "man" }, { "weight", "50" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsNull(res.HitRule);
@@ -449,7 +449,7 @@ namespace NCR.Tests
         #region MoreRuleTestCase
 
         [TestMethod]
-        public void BaseComputeType_MoreBaseComputeType_HitRule()
+        public async Task BaseComputeType_MoreBaseComputeType_HitRule()
         {
             //定义规则
             var rule1 = new Rule
@@ -481,13 +481,13 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule1);
-            RuleEngine.AddRule(rule2);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule1);
+            await RuleEngine.AddRule(rule2);
             //定义事实
             var fact = new Fact { { "age", "14" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsTrue(res.Success);
@@ -495,7 +495,7 @@ namespace NCR.Tests
         }
 
         [TestMethod]
-        public void BaseComputeType_MoreBaseComputeType_MissRule()
+        public async Task BaseComputeType_MoreBaseComputeType_MissRule()
         {
             //定义规则
             var rule1 = new Rule
@@ -527,13 +527,13 @@ namespace NCR.Tests
                 },
             };
             //添加规则到引擎
-            RuleEngine.Clear();
-            RuleEngine.AddRule(rule1);
-            RuleEngine.AddRule(rule2);
+            await RuleEngine.Clear();
+            await RuleEngine.AddRule(rule1);
+            await RuleEngine.AddRule(rule2);
             //定义事实
             var fact = new Fact { { "age", "24" } };
             //运算
-            var res = RuleEngine.Compute(fact);
+            var res = await RuleEngine.Compute(fact);
 
             Assert.IsNotNull(res);
             Assert.IsNull(res.HitRule);
