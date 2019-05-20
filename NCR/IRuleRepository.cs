@@ -21,15 +21,15 @@ namespace NCR
         /// <returns>规则集合</returns>
         Task<GetRuleListResponse> GetRules(GetRuleListResquest resquest);
         /// <summary>
-        /// 添加规则
+        /// 保存规则
         /// </summary>
         /// <param name="rule">规则对象</param>
-        Task AddRule(Rule rule);
+        Task SaveRule(Rule rule);
         /// <summary>
-        /// 添加规则项目
+        /// 保存规则项目
         /// </summary>
         /// <param name="ruleItem">规则项对象</param>
-        Task AddRuleItem(RuleItem ruleItem);
+        Task SaveRuleItem(RuleItem ruleItem);
         /// <summary>
         /// 重置所有规则
         /// </summary>

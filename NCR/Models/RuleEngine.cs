@@ -30,7 +30,7 @@ namespace NCR.Models
 
         public async Task AddRule(Rule rule)
         {
-            await _ruleRepository.AddRule(rule);
+            await _ruleRepository.SaveRule(rule);
         }
         public async Task Clear()
         {

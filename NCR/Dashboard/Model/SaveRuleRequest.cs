@@ -4,8 +4,12 @@ using NCR.Models;
 
 namespace NCR.Dashboard.Model
 {
-    public class AddRuleRequest
+    public class SaveRuleRequest
     {
+        /// <summary>
+        /// 规则编号
+        /// </summary>
+        public int Id { get; set; }
         /// <summary>
         /// 规则名称
         /// </summary>

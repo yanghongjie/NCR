@@ -1,6 +1,6 @@
 ﻿namespace NCR.Dashboard.Model
 {
-    public class AddRuleItemResponse : BaseResponse
+    public class SaveRuleResponse : BaseResponse
     {
         
     }

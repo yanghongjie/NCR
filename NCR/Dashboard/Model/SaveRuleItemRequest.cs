@@ -1,7 +1,11 @@
 ﻿namespace NCR.Dashboard.Model
 {
-    public class AddRuleItemRequest
+    public class SaveRuleItemRequest
     {
+        /// <summary>
+        /// 规则项编号
+        /// </summary>
+        public int Id { get; set; }
         /// <summary>
         /// 规则编号
         /// </summary>

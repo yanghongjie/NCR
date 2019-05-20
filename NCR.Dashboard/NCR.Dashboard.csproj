@@ -1,0 +1,131 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="%2a%2a\**" />
+    <Compile Remove="node_modules\%40alifd\**" />
+    <Compile Remove="node_modules\.bin\**" />
+    <Compile Remove="node_modules\.cache\**" />
+    <Compile Remove="node_modules\acorn-jsx\**" />
+    <Compile Remove="node_modules\clipboard\**" />
+    <Compile Remove="node_modules\core-js-compat\**" />
+    <Compile Remove="node_modules\css-selector-tokenizer\**" />
+    <Compile Remove="node_modules\dateformat\**" />
+    <Compile Remove="node_modules\degenerator\**" />
+    <Compile Remove="node_modules\escodegen\**" />
+    <Compile Remove="node_modules\gulp\**" />
+    <Compile Remove="node_modules\handlebars-loader\**" />
+    <Compile Remove="node_modules\html-minifier\**" />
+    <Compile Remove="node_modules\html-webpack-plugin\**" />
+    <Compile Remove="node_modules\http-proxy\**" />
+    <Compile Remove="node_modules\ice-npm-utils\**" />
+    <Compile Remove="node_modules\js-base64\**" />
+    <Compile Remove="node_modules\less\**" />
+    <Compile Remove="node_modules\loader-utils\**" />
+    <Compile Remove="node_modules\mute-stream\**" />
+    <Compile Remove="node_modules\node-gyp\**" />
+    <Compile Remove="node_modules\node-releases\**" />
+    <Compile Remove="node_modules\node-sass\**" />
+    <Compile Remove="node_modules\postcss-selector-parser\**" />
+    <Compile Remove="node_modules\prismjs\**" />
+    <Compile Remove="node_modules\react-dev-utils\**" />
+    <Compile Remove="node_modules\react-highcharts\**" />
+    <Compile Remove="node_modules\regjsparser\**" />
+    <Compile Remove="node_modules\send\**" />
+    <Compile Remove="node_modules\style-equal\**" />
+    <Compile Remove="node_modules\tar\**" />
+    <Compile Remove="node_modules\uglifyjs-webpack-plugin\**" />
+    <Compile Remove="node_modules\unique-filename\**" />
+    <Compile Remove="node_modules\url-loader\**" />
+    <Compile Remove="node_modules\vinyl-fs\**" />
+    <Compile Remove="node_modules\webpack-bundle-analyzer\**" />
+    <Compile Remove="node_modules\webpack-dev-middleware\**" />
+    <Compile Remove="node_modules\webpack-dev-server\**" />
+    <EmbeddedResource Remove="%2a%2a\**" />
+    <EmbeddedResource Remove="node_modules\%40alifd\**" />
+    <EmbeddedResource Remove="node_modules\.bin\**" />
+    <EmbeddedResource Remove="node_modules\.cache\**" />
+    <EmbeddedResource Remove="node_modules\acorn-jsx\**" />
+    <EmbeddedResource Remove="node_modules\clipboard\**" />
+    <EmbeddedResource Remove="node_modules\core-js-compat\**" />
+    <EmbeddedResource Remove="node_modules\css-selector-tokenizer\**" />
+    <EmbeddedResource Remove="node_modules\dateformat\**" />
+    <EmbeddedResource Remove="node_modules\degenerator\**" />
+    <EmbeddedResource Remove="node_modules\escodegen\**" />
+    <EmbeddedResource Remove="node_modules\gulp\**" />
+    <EmbeddedResource Remove="node_modules\handlebars-loader\**" />
+    <EmbeddedResource Remove="node_modules\html-minifier\**" />
+    <EmbeddedResource Remove="node_modules\html-webpack-plugin\**" />
+    <EmbeddedResource Remove="node_modules\http-proxy\**" />
+    <EmbeddedResource Remove="node_modules\ice-npm-utils\**" />
+    <EmbeddedResource Remove="node_modules\js-base64\**" />
+    <EmbeddedResource Remove="node_modules\less\**" />
+    <EmbeddedResource Remove="node_modules\loader-utils\**" />
+    <EmbeddedResource Remove="node_modules\mute-stream\**" />
+    <EmbeddedResource Remove="node_modules\node-gyp\**" />
+    <EmbeddedResource Remove="node_modules\node-releases\**" />
+    <EmbeddedResource Remove="node_modules\node-sass\**" />
+    <EmbeddedResource Remove="node_modules\postcss-selector-parser\**" />
+    <EmbeddedResource Remove="node_modules\prismjs\**" />
+    <EmbeddedResource Remove="node_modules\react-dev-utils\**" />
+    <EmbeddedResource Remove="node_modules\react-highcharts\**" />
+    <EmbeddedResource Remove="node_modules\regjsparser\**" />
+    <EmbeddedResource Remove="node_modules\send\**" />
+    <EmbeddedResource Remove="node_modules\style-equal\**" />
+    <EmbeddedResource Remove="node_modules\tar\**" />
+    <EmbeddedResource Remove="node_modules\uglifyjs-webpack-plugin\**" />
+    <EmbeddedResource Remove="node_modules\unique-filename\**" />
+    <EmbeddedResource Remove="node_modules\url-loader\**" />
+    <EmbeddedResource Remove="node_modules\vinyl-fs\**" />
+    <EmbeddedResource Remove="node_modules\webpack-bundle-analyzer\**" />
+    <EmbeddedResource Remove="node_modules\webpack-dev-middleware\**" />
+    <EmbeddedResource Remove="node_modules\webpack-dev-server\**" />
+    <None Remove="%2a%2a\**" />
+    <None Remove="node_modules\%40alifd\**" />
+    <None Remove="node_modules\.bin\**" />
+    <None Remove="node_modules\.cache\**" />
+    <None Remove="node_modules\acorn-jsx\**" />
+    <None Remove="node_modules\clipboard\**" />
+    <None Remove="node_modules\core-js-compat\**" />
+    <None Remove="node_modules\css-selector-tokenizer\**" />
+    <None Remove="node_modules\dateformat\**" />
+    <None Remove="node_modules\degenerator\**" />
+    <None Remove="node_modules\escodegen\**" />
+    <None Remove="node_modules\gulp\**" />
+    <None Remove="node_modules\handlebars-loader\**" />
+    <None Remove="node_modules\html-minifier\**" />
+    <None Remove="node_modules\html-webpack-plugin\**" />
+    <None Remove="node_modules\http-proxy\**" />
+    <None Remove="node_modules\ice-npm-utils\**" />
+    <None Remove="node_modules\js-base64\**" />
+    <None Remove="node_modules\less\**" />
+    <None Remove="node_modules\loader-utils\**" />
+    <None Remove="node_modules\mute-stream\**" />
+    <None Remove="node_modules\node-gyp\**" />
+    <None Remove="node_modules\node-releases\**" />
+    <None Remove="node_modules\node-sass\**" />
+    <None Remove="node_modules\postcss-selector-parser\**" />
+    <None Remove="node_modules\prismjs\**" />
+    <None Remove="node_modules\react-dev-utils\**" />
+    <None Remove="node_modules\react-highcharts\**" />
+    <None Remove="node_modules\regjsparser\**" />
+    <None Remove="node_modules\send\**" />
+    <None Remove="node_modules\style-equal\**" />
+    <None Remove="node_modules\tar\**" />
+    <None Remove="node_modules\uglifyjs-webpack-plugin\**" />
+    <None Remove="node_modules\unique-filename\**" />
+    <None Remove="node_modules\url-loader\**" />
+    <None Remove="node_modules\vinyl-fs\**" />
+    <None Remove="node_modules\webpack-bundle-analyzer\**" />
+    <None Remove="node_modules\webpack-dev-middleware\**" />
+    <None Remove="node_modules\webpack-dev-server\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="node_modules\" />
+  </ItemGroup>
+
+</Project>

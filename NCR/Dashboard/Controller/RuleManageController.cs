@@ -54,40 +54,41 @@ namespace NCR.Dashboard.Controller
         }
 
         /// <summary>
-        /// 新增规则
+        /// 保存规则
         /// </summary>
-        [HttpPost("AddRule")]
-        public async Task<AddRuleResponse> AddRule([FromBody]AddRuleRequest request)
+        [HttpPost("SaveRule")]
+        public async Task<SaveRuleResponse> SaveRule([FromBody]SaveRuleRequest request)
         {
-            var response = new AddRuleResponse();
+            var response = new SaveRuleResponse();
             try
             {
                 var rule = new Rule
                 {
+                    Id = request.Id,
                     Name = request.Name,
                     Priority = request.Priority,
                     Type = request.Type,
                     Enabled = request.Enabled,
                     Desciption = request.Desciption
                 };
-                await _ruleRepository.AddRule(rule);
+                await _ruleRepository.SaveRule(rule);
                 response.Success = true;
             }
             catch (Exception e)
             {
                 response.Message = e.Message;
-                _logger.LogError($"AddRule 出现异常：{e.Message}", e);
+                _logger.LogError($"SaveRule 出现异常：{e.Message}", e);
             }
             return response;
         }
 
         /// <summary>
-        /// 新增规则项目
+        /// 保存规则项目
         /// </summary>
-        [HttpPost("AddRuleItem")]
-        public async Task<AddRuleItemResponse> AddRuleItem([FromBody]AddRuleItemRequest request)
+        [HttpPost("SaveRuleItem")]
+        public async Task<SaveRuleItemResponse> SaveRuleItem([FromBody]SaveRuleItemRequest request)
         {
-            var response = new AddRuleItemResponse();
+            var response = new SaveRuleItemResponse();
             try
             {
                 var ruleItem = new RuleItem
@@ -99,13 +100,13 @@ namespace NCR.Dashboard.Controller
                     Enabled = request.Enabled,
                     Desciption = request.Desciption
                 };
-                await _ruleRepository.AddRuleItem(ruleItem);
+                await _ruleRepository.SaveRuleItem(ruleItem);
                 response.Success = true;
             }
             catch (Exception e)
             {
                 response.Message = e.Message;
-                _logger.LogError($"AddRuleItem 出现异常：{e.Message}", e);
+                _logger.LogError($"SaveRuleItem 出现异常：{e.Message}", e);
             }
             return response;
         }
@@ -126,6 +127,7 @@ namespace NCR.Dashboard.Controller
                     {
                         Name = $"test rule {i}",
                         Priority = i,
+                        Desciption = $"test rule {i} desc",
                         Items = new List<RuleItem>
                         {
                             new RuleItem
@@ -133,10 +135,15 @@ namespace NCR.Dashboard.Controller
                                 RuleItemType = $"rule {i} test item",
                                 ComputeType = BaseComputeType.Any.ToString(),
                                 Value = random.Next(1,100).ToString(),
+                                Desciption = $"rule {i} test item desc",
                             }
                         }
                     };
-                    await _ruleRepository.AddRule(rule);
+                    if (i > 6)
+                    {
+                        rule.Enabled = false;
+                    }
+                    await _ruleRepository.SaveRule(rule);
                 }
                 response.Success = true;
             }
