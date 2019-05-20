@@ -11,7 +11,7 @@ const FormItem = Form.Item;
 
 @DataBinder({
   ruleData: {
-    url: 'http://localhost:4641/RuleManage/GetRuleList',
+    url: 'http://localhost:33304/RuleManage/GetRuleList',
     //url: '/RuleManage/GetRuleList',
     method:'POST',
     data: {
@@ -64,7 +64,7 @@ export default class RuleManageTable extends Component {
       }
 
       const that = this;
-      axios.post('http://localhost:4641/RuleManage/SaveRule', values)
+      axios.post('http://localhost:33304/RuleManage/SaveRule', values)
       .then(function ({data}) {
         if(data.success){
           that.onClose();

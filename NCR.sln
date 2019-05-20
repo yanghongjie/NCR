@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.452
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCR", "NCR\NCR.csproj", "{6F59C42E-DF2A-4F20-AADD-916FA775F8BC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCR.Tests", "NCR.Tests\NCR.Tests.csproj", "{9997FEF3-3F07-42F9-9C19-F838330848A4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCR.Sample", "NCR.Sample\NCR.Sample.csproj", "{C860C7A8-FC9C-4744-B6CE-235465DFF033}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCR.Dashboard", "NCR.Dashboard\NCR.Dashboard.csproj", "{9CEB6876-BA91-4153-88A2-FDB51AB9CAA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{C860C7A8-FC9C-4744-B6CE-235465DFF033}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C860C7A8-FC9C-4744-B6CE-235465DFF033}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C860C7A8-FC9C-4744-B6CE-235465DFF033}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9CEB6876-BA91-4153-88A2-FDB51AB9CAA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CEB6876-BA91-4153-88A2-FDB51AB9CAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CEB6876-BA91-4153-88A2-FDB51AB9CAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CEB6876-BA91-4153-88A2-FDB51AB9CAA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
