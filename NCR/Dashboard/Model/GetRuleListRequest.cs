@@ -3,7 +3,7 @@
     /// <summary>
     /// 获取规则请求
     /// </summary>
-    public class GetRuleListResquest
+    public class GetRuleListRequest
     {
         public string RuleName { get; set; }
         public string RuleType { get; set; }

@@ -16,12 +16,26 @@ namespace NCR.Internal
         {
             return await Task.FromResult(Rules);
         }
-        public async Task<GetRuleListResponse> GetRules(GetRuleListResquest resquest)
+        public async Task<GetRuleListResponse> GetRules(GetRuleListRequest request)
         {
             var response = new GetRuleListResponse();
-
-            var data = Rules.Skip(resquest.PageIndex * resquest.PageSize).Take(resquest.PageSize).ToList();
-            response.TotalCount = Rules.Count;
+            var query = Rules.AsQueryable();
+            if (request.RuleName.IsNotNullOrEmpty())
+            {
+                query = query.Where(x => x.Name.Contains(request.RuleName));
+            }
+            if (request.RuleType.IsNotNullOrEmpty())
+            {
+                query = query.Where(x => x.Type.Contains(request.RuleType));
+            }
+            if (request.RuleStatus != -1)
+            {
+                var enabled = request.RuleStatus == 1;
+                query = query.Where(x => x.Enabled == enabled);
+            }
+            var totalCount = query.Count();
+            var data = query.Skip(request.PageIndex * request.PageSize).Take(request.PageSize).ToList();
+            response.TotalCount = totalCount;
             response.Data = await Task.FromResult(data);
 
             return response;

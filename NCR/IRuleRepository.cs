@@ -19,7 +19,7 @@ namespace NCR
         /// 获取所有规则
         /// </summary>
         /// <returns>规则集合</returns>
-        Task<GetRuleListResponse> GetRules(GetRuleListResquest resquest);
+        Task<GetRuleListResponse> GetRules(GetRuleListRequest request);
         /// <summary>
         /// 保存规则
         /// </summary>

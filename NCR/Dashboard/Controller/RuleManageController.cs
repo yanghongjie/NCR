@@ -29,7 +29,7 @@ namespace NCR.Dashboard.Controller
         /// 获取规则集合
         /// </summary>
         [HttpPost("GetRuleList")]
-        public async Task<GetRuleListResponse> GetRuleList([FromBody]GetRuleListResquest request)
+        public async Task<GetRuleListResponse> GetRuleList([FromBody]GetRuleListRequest request)
         {
             var response = new GetRuleListResponse();
             if (request.PageIndex <= 0)
