@@ -28,13 +28,13 @@ namespace NCR.Internal
             {
                 query = query.Where(x => x.Type.Contains(request.RuleType));
             }
-            if (request.RuleStatus != -1)
+            if (request.RuleStatus.HasValue && request.RuleStatus.Value != -1)
             {
                 var enabled = request.RuleStatus == 1;
                 query = query.Where(x => x.Enabled == enabled);
             }
             var totalCount = query.Count();
-            var data = query.Skip(request.PageIndex * request.PageSize).Take(request.PageSize).ToList();
+            var data = query.Skip(request.PageIndex * request.PageSize).Take(request.PageSize).OrderByDescending(x => x.Id).ToList();
             response.TotalCount = totalCount;
             response.Data = await Task.FromResult(data);
 

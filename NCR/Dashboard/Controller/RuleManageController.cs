@@ -32,9 +32,13 @@ namespace NCR.Dashboard.Controller
         public async Task<GetRuleListResponse> GetRuleList([FromBody]GetRuleListRequest request)
         {
             var response = new GetRuleListResponse();
-            if (request.PageIndex <= 0)
+            if (request.PageIndex <= 1)
             {
-                request.PageIndex = 0;
+                request.PageIndex = 1;
+            }
+            else
+            {
+                request.PageIndex = request.PageIndex - 1;
             }
             if (request.PageSize < 20)
             {
