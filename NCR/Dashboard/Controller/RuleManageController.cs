@@ -34,7 +34,7 @@ namespace NCR.Dashboard.Controller
             var response = new GetRuleListResponse();
             if (request.PageIndex <= 1)
             {
-                request.PageIndex = 1;
+                request.PageIndex = 0;
             }
             else
             {
@@ -97,6 +97,7 @@ namespace NCR.Dashboard.Controller
             {
                 var ruleItem = new RuleItem
                 {
+                    Id = request.Id,
                     RuleId = request.RuleId,
                     RuleItemType = request.RuleItemType,
                     ComputeType = request.ComputeType,
@@ -111,6 +112,27 @@ namespace NCR.Dashboard.Controller
             {
                 response.Message = e.Message;
                 _logger.LogError($"SaveRuleItem 出现异常：{e.Message}", e);
+            }
+            return response;
+        }
+
+        /// <summary>
+        /// 根据规则编号获取规则
+        /// </summary>
+        [HttpPost("GetRuleById")]
+        public async Task<GetRuleByIdResponse> GetRuleById([FromBody]GetRuleByIdRequest request)
+        {
+            var response = new GetRuleByIdResponse();
+           
+            try
+            {
+                response.Data = await _ruleRepository.GetRuleById(request.RuleId);
+                response.Success = true;
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+                _logger.LogError($"GetRuleById 出现异常：{e.Message}", e);
             }
             return response;
         }

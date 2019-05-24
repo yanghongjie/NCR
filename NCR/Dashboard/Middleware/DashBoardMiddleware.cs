@@ -54,6 +54,17 @@ namespace NCR.Dashboard.Middleware
                     {
                         path = "index.html";
                     }
+                    else
+                    {
+                        if (path.Contains("css") || path.Contains("js") || path.Contains("png"))
+                        {
+                            path = path.Replace("ruleItem/", "");
+                        }
+                        else
+                        {
+                            path = "index.html";
+                        }
+                    }
                     string htmlStr;
                     var currentPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dashboard", "Dist", path);
                     using (var fs = new FileStream(currentPath, FileMode.Open, FileAccess.Read))

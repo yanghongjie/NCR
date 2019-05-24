@@ -16,6 +16,11 @@ namespace NCR
         /// <returns>规则集合</returns>
         Task<List<Rule>> GetRules();
         /// <summary>
+        /// 根据规则编号获取规则
+        /// </summary>
+        /// <returns>规则编号</returns>
+        Task<RuleInfo> GetRuleById(int ruleId);
+        /// <summary>
         /// 获取所有规则
         /// </summary>
         /// <returns>规则集合</returns>

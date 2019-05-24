@@ -16,6 +16,25 @@ namespace NCR.Internal
         {
             return await Task.FromResult(Rules);
         }
+        public async Task<RuleInfo> GetRuleById(int ruleId)
+        {
+            var rule = Rules.FirstOrDefault(x => x.Id == ruleId);
+            if (rule != null)
+            {
+                var info = new RuleInfo
+                {
+                    Id = rule.Id,
+                    Name = rule.Name,
+                    Type = rule.Type,
+                    Priority = rule.Priority,
+                    Enabled = rule.Enabled,
+                    Desciption = rule.Desciption,
+                    RuleItems = rule.Items
+                };
+                return await Task.FromResult(info); ;
+            }
+            return null;
+        }
         public async Task<GetRuleListResponse> GetRules(GetRuleListRequest request)
         {
             var response = new GetRuleListResponse();
@@ -34,7 +53,7 @@ namespace NCR.Internal
                 query = query.Where(x => x.Enabled == enabled);
             }
             var totalCount = query.Count();
-            var data = query.Skip(request.PageIndex * request.PageSize).Take(request.PageSize).OrderByDescending(x => x.Id).ToList();
+            var data = query.OrderByDescending(x => x.Id).Skip(request.PageIndex * request.PageSize).Take(request.PageSize).ToList();
             response.TotalCount = totalCount;
             response.Data = await Task.FromResult(data);
 
@@ -71,6 +90,7 @@ namespace NCR.Internal
                 {
                     foreach (var ruleItem in rule.Items)
                     {
+                        ruleItem.Id = RuleItems.Any() ? RuleItems.Max(x => x.Id) + 1 : 1;
                         ruleItem.RuleId = rule.Id;
                         RuleItems.Add(ruleItem);
                     }
